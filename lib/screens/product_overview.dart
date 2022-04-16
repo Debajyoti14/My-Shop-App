@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/providers/cart_item.dart';
 import 'package:provider/provider.dart';
 import '../providers/product_providers.dart';
+import '../widgets/badge.dart';
 import '../widgets/product_grid.dart';
 
 class ProductOverview extends StatefulWidget {
@@ -33,6 +35,16 @@ class _ProductOverviewState extends State<ProductOverview> {
               PopupMenuItem(child: Text('Only Favourites'), value: 0),
               PopupMenuItem(child: Text('Show All'), value: 1),
             ],
+          ),
+          Consumer<Cart>(
+            builder: (_, cart, ch) => Badge(
+              child: ch,
+              value: cart.itemCount.toString(),
+            ),
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {},
+            ),
           )
         ],
       ),
