@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/providers/cart_item.dart';
 import 'package:provider/provider.dart';
-import '../providers/product_providers.dart';
+
+import '/providers/cart_item.dart';
 import '../widgets/badge.dart';
 import '../widgets/product_grid.dart';
+import 'cart_screen.dart';
 
 class ProductOverview extends StatefulWidget {
   @override
@@ -43,7 +44,9 @@ class _ProductOverviewState extends State<ProductOverview> {
             ),
             child: IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
             ),
           )
         ],
