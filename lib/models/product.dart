@@ -21,4 +21,6 @@ class Product with ChangeNotifier {
     isFavorite = !isFavorite;
     notifyListeners();
   }
+
+  Product findById(String productId) {}
 }
