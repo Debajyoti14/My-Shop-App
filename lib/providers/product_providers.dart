@@ -73,7 +73,7 @@ class Products with ChangeNotifier {
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body);
-      // print(extractedData);
+      print(extractedData);
       final List<Product> loadedProducts = [];
       if (extractedData == null) {
         return;
@@ -88,9 +88,11 @@ class Products with ChangeNotifier {
         ));
       });
       _items = loadedProducts;
+      print(_items);
       notifyListeners();
     } catch (e) {
-      throw (e);
+      print(e);
+      // throw (e);
     }
   }
 
