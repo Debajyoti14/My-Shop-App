@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
-import '../constants.dart';
 import '../providers/product_providers.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/changeThemeButtonWidget.dart';
