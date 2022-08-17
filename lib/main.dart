@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/constants.dart';
 import 'package:flutter_complete_guide/screens/edit_product_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -28,22 +29,28 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: Orders(),
         ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'MyShop',
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.deepOrange,
-          fontFamily: 'Lato',
+        ChangeNotifierProvider.value(
+          value: ThemeProvider(),
         ),
-        home: ProductOverview(),
-        routes: {
-          ProductDetail.routeName: (ctx) => ProductDetail(),
-          CartScreen.routeName: (ctx) => CartScreen(),
-          OrderScreen.routeName: (ctx) => OrderScreen(),
-          UserProducts.routeName: (ctx) => UserProducts(),
-          EditProductScreen.routeName: (ctx) => EditProductScreen(),
+      ],
+      child: Builder(
+        builder: (BuildContext context) {
+          final themeProvider = Provider.of<ThemeProvider>(context);
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'MyShop',
+            themeMode: themeProvider.themeMode,
+            theme: MyThemes.lightTheme,
+            darkTheme: MyThemes.darkTheme,
+            home: ProductOverview(),
+            routes: {
+              ProductDetail.routeName: (ctx) => ProductDetail(),
+              CartScreen.routeName: (ctx) => CartScreen(),
+              OrderScreen.routeName: (ctx) => OrderScreen(),
+              UserProducts.routeName: (ctx) => UserProducts(),
+              EditProductScreen.routeName: (ctx) => EditProductScreen(),
+            },
+          );
         },
       ),
     );

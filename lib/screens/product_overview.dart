@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../constants.dart';
 import '../providers/product_providers.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/changeThemeButtonWidget.dart';
 import '/providers/cart_item.dart';
 import '../widgets/badge.dart';
 import '../widgets/product_grid.dart';
@@ -45,7 +47,10 @@ class _ProductOverviewState extends State<ProductOverview> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Shop'),
+        elevation: 0,
+        title: Text(
+          'My Shop',
+        ),
         actions: <Widget>[
           PopupMenuButton(
             onSelected: (int selectedValue) {
@@ -76,7 +81,8 @@ class _ProductOverviewState extends State<ProductOverview> {
                 Navigator.of(context).pushNamed(CartScreen.routeName);
               },
             ),
-          )
+          ),
+          ChangeThemeButtonWidget()
         ],
       ),
       drawer: AppDrawer(),
